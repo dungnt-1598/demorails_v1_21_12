@@ -1,0 +1,22 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @category.name %>
+</p>
+<section class="section posts">
+  <div class="container">
+    <h2 class="subtitle is-5">
+      <strong><%= @category.posts.count %></strong> posts
+    </h2>
+    <%= render @category.posts %>
+    <div class="post-form">
+      <hr />
+      <h3 class="subtitle is-3">Create a post</h3>
+      <%= render partial: 'posts/form', locals: { post: @category.posts.build } %>
+    </div>
+  </div>
+</section>
+
+<%= link_to 'Edit', edit_category_path(@category) %> |
+<%= link_to 'Back', categories_path %>

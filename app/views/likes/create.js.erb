@@ -1,0 +1,8 @@
+
+<% if @post.present? %>
+    $('#js-like-button-post').html("<%= escape_javascript render('posts/like_button', post: @post) %>");
+<% end %>
+<% if @comment.present? %>
+    $('#js-like-button-comment-<%= @comment.id%>').html("<%= escape_javascript render('comments/like_button_comment', comment: @comment) %>");
+<% end %>
+

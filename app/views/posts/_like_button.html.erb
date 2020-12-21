@@ -1,0 +1,10 @@
+<% if current_user.liked_post?(post) %>
+  <%= link_to "Unlike", like_path(current_user.like_by_post(post)), method: :delete, remote: true %>
+<% else %>
+  <%= form_for Like.new,remote: true, url: post_likes_path(post) do |f| %>
+    <%= f.hidden_field :tagetable_type, value: "Post" %>
+    <%= f.hidden_field :tagetable_id, value: post.id %>
+    <%= f.submit 'Like' %>
+  <% end %>
+<% end %>
+<p><%= post.likes.count %> <%= (post.likes.count) == 1 ? 'Like' : 'Likes'%></p>
